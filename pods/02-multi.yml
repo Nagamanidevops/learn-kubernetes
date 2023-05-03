@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata: 
+    name: 02-multi
+spec:
+    containers: 
+        - name: ngimx
+          image: nginx  
+        - name: httpd
+          image: httpd 
+#status: {} 
