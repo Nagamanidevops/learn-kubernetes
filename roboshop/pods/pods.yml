@@ -10,8 +10,8 @@ spec:
     - name: frontend
       image: gnagamani/frontend
       ports:
-         - hostport: 40000
-         - containerport: 80
+        - hostPort: 40000
+         
    
 ---
 apiVersion: v1
