@@ -11,6 +11,7 @@ spec:
       image: gnagamani/frontend
       ports:
         - hostPort: 40000
+          containerport: 80
          
    
 ---
