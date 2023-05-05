@@ -1,54 +1,138 @@
-apiVersion: v1
-kind: Pod
-metadata: 
-    name: frontend
-spec:
-    containers: 
-        - name: frontend
-          image: gnagamani/frontend 
 ---
 apiVersion: v1
 kind: Pod
-metadata: 
-    name: cart
+metadata:
+  name: frontend
+  labels:
+    component: frontend
 spec:
-    containers: 
-        - name: cart
-          image: gnagamani/cart 
+  containers:
+    - name: frontend
+      image: gnagamani/frontend
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-roboshop
+spec:
+  selector:
+    component: frontend
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
 ---
 apiVersion: v1
 kind: Pod
-metadata: 
-    name: catalogue
+metadata:
+  name: user
+  labels:
+    component: user
 spec:
-    containers: 
-        - name: catalogue
-          image: gnagamani/catalogue
+  containers:
+    - name: user
+      image: gnagamani/user
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: user-roboshop
+spec:
+  selector:
+    component: user
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
 ---
 apiVersion: v1
 kind: Pod
-metadata: 
-    name: user
+metadata:
+  name: cart
+  labels:
+    component: cart
 spec:
-    containers: 
-        - name: user
-          image: gnagamani/user 
+  containers:
+    - name: cart
+      image: gnagamani/cart
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cart-roboshop
+spec:
+  selector:
+    component: cart
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
 ---
 apiVersion: v1
 kind: Pod
-metadata: 
-    name: payment
+metadata:
+  name: catalogue
+  labels:
+    component: catalogue
 spec:
-    containers: 
-        - name: payment
-          image: gnagamani/payment 
+  containers:
+    - name: catalogue
+      image: gnagamani/catalogue
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: catalogue-roboshop
+spec:
+  selector:
+    component: catalogue
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
 ---
 apiVersion: v1
 kind: Pod
-metadata: 
-    name: shipping
+metadata:
+  name: payment
+  labels:
+    component: payment
 spec:
-    containers: 
-        - name: shipping
-          image: gnagamani/shipping 
-          
+  containers:
+    - name: payment
+      image: gnagamani/payment
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: payment-roboshop
+spec:
+  selector:
+    component: payment
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: shipping
+  labels:
+    component: shipping
+spec:
+  containers:
+    - name: shipping
+      image: gnagamani/shipping
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: shipping-roboshop
+spec:
+  selector:
+    component: shipping
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
