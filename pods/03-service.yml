@@ -1,18 +1,19 @@
 apiVersion: v1
 kind: Pod
-metadata: 
-    name: 03-service
+metadata:
+  name: 03-service
 spec:
-    containers: 
-        - name: nginx
-          image: nginx  
+  containers:
+    - name: nginx
+      image: nginx
+
 ---
 apiVersion: v1
-kind: service
-metadata: 
-    name: service-03
+kind: Service
+metadata:
+  name: service-03
 spec:
-    ports:
-     - protocol: TCP
-       port: 80
-       targetport: 80  
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
